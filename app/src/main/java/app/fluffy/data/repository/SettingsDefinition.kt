@@ -84,7 +84,7 @@ data class AppSettings(
         category = Appearance::class,
         type = Dropdown::class,
         key = "language",
-        languages = ["en", "ar", "cs", "de", "el", "es", "fa", "fi", "fr", "he", "hr", "hu", "id", "it", "ja", "ko", "nl", "pl", "pt", "ru", "sv", "tr", "uk", "vi", "zh-CN"]
+        languages = ["en", "ar"]
     )
     val language: AppLanguage = AppLanguage.System,
 
@@ -141,9 +141,6 @@ data class AppSettings(
     // Not currently shown in settings UI, but used by FluffyTheme
     @Persisted(key = "use_aurora_theme")
     val useAuroraTheme: Boolean = true,
-
-    @Persisted(key = "cta_banner_dismissed_2026")
-    val ctaBannerDismissed2026: Boolean = false,
 
     @Persisted(key = "editor_font_size")
     val editorFontSize: Int = 14,
@@ -241,20 +238,7 @@ data class AppSettings(
     @ActionHandler(ClearCacheAction::class)
     val clearCache: Unit = Unit,
 
-    @Setting(
-        titleKey = FluffySettingsKeys.SETTING_SUPPORT_DEVELOPMENT,
-        description = "If you find this app useful, consider supporting its continued development",
-        descriptionKey = FluffySettingsKeys.SETTING_SUPPORT_DEVELOPMENT_DESCRIPTION,
-        category = System::class,
-        type = Button::class
-    )
-    @ActionHandler(SupportDevelopmentAction::class)
-    val supportDevelopment: Unit = Unit,
 )
-
-object SupportDevelopmentAction : SettingAction {
-    override val id: String = "supportDevelopment"
-}
 
 object ClearCacheAction : SettingAction {
     override val id: String = "clearCache"

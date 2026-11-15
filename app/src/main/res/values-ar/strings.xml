@@ -3,7 +3,6 @@
     <string name="app_name">Fluffy</string>
     <string name="about_fluffy">حول التطبيق والأسئلة الشائعة</string>
     <string name="screen_time">وقت الشاشة</string>
-    <string name="learn_more">اعرف المزيد</string>
     <string name="cannot_access">لا يمكن الوصول إلى %s: %s</string>
     <string name="shizuku_not_running">Shizuku لا يعمل</string>
     <string name="root_access_not_available">صلاحيات root غير متاحة</string>
@@ -190,8 +189,6 @@
     <string name="setting_prefer_builtin_viewers_desc">فتح الصور والصوت والفيديو وملفات PDF والنصوص داخل Fluffy بدلًا من مربع النظام.</string>
     <string name="setting_warn_shell_writes">التحذير قبل عمليات الكتابة ذات الصلويات العالية</string>
     <string name="setting_warn_shell_writes_desc">إظهار رسالة تأكيد قبل الكتابة أو الحذف عبر root أو Shizuku</string>
-    <string name="setting_support_development">ادعم التطوير</string>
-    <string name="setting_support_development_desc">إذا كان هذا التطبيق مفيدًا لك، فكّر في دعم تطويره المستمر</string>
     <string name="category_general_settings">عام</string>
     <string name="category_appearance_settings">المظهر</string>
     <string name="category_archives">الأرشيفات</string>
@@ -294,7 +291,6 @@
     <string name="cannot_launch_installer">تعذّر تشغيل المُثبِّت</string>
     <string name="no_installer_found">لم يتم العثور على مُثبِّت</string>
     <string name="install">تثبيت</string>
-    <string name="cta_banner">F-Droid مهدَّد. يغيّر Google طريقة تثبيت التطبيقات على هاتفك. نحتاج إلى مساعدتك.</string>
     <string name="moving_files">جارٍ نقل الملفات</string>
     <string name="copying_files">جارٍ نسخ الملفات</string>
     <string name="untitled">بدون عنوان</string>
@@ -347,4 +343,10 @@
         <item quantity="many">تم عرض %1$d نتيجة، وأُوقف البحث بعد %2$d مجلدًا. ضيّق نطاق البحث.</item>
         <item quantity="other">تم عرض %1$d نتيجة، وأُوقف البحث بعد %2$d مجلدًا. ضيّق نطاق البحث.</item>
     </plurals>
+    <string name="item">عنصر</string>
+    <string name="select_item">تحديد %1$s</string>
+    <string name="rewind">إرجاع</string>
+    <string name="forward">تقديم</string>
+    <string name="play">تشغيل</string>
+    <string name="pause">إيقاف مؤقت</string>
 </resources>

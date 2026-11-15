@@ -28,7 +28,8 @@ android {
         minSdk = 24
         targetSdk = 37
         versionCode = 970
-        versionName = "4.6.0"
+        versionName = "4.6.0-ar1"
+        resourceConfigurations += setOf("en", "ar")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
@@ -54,22 +55,8 @@ android {
         }
     }
 
-    signingConfigs {
-        create("release") {
-            storeFile = file(System.getenv("KEYSTORE_PATH") ?: "${rootProject.projectDir}/release.keystore")
-            storePassword = System.getenv("STORE_PASSWORD")
-            keyAlias = System.getenv("KEY_ALIAS")
-            keyPassword = System.getenv("KEY_PASSWORD")
-            enableV1Signing = true
-            enableV2Signing = true
-            enableV3Signing = false
-            enableV4Signing = false
-        }
-    }
-
     buildTypes {
         getByName("release") {
-            signingConfig = signingConfigs.getByName("release")
             isDebuggable = false
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")

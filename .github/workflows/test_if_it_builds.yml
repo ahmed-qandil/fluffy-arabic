@@ -1,5 +1,0 @@
-name: CI
-on: [push, pull_request]
-jobs:
-  build:
-    uses: mlm-games/ci/.github/workflows/android-ci.yml@v1

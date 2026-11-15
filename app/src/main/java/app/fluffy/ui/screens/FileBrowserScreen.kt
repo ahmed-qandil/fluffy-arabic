@@ -133,8 +133,6 @@ import app.fluffy.io.ShellEntry
 import app.fluffy.io.ShellIo
 import app.fluffy.helper.DeviceUtils
 import app.fluffy.helper.cardAsFocusGroup
-import app.fluffy.ui.components.AlertBanner
-import app.fluffy.ui.components.AlertBannerManager
 import app.fluffy.ui.components.ConfirmationDialog
 import app.fluffy.ui.components.FileGridItem
 import app.fluffy.ui.components.FileListRow
@@ -267,10 +265,6 @@ fun FileBrowserScreen(
     var propertiesUris by remember { mutableStateOf<List<Uri>>(emptyList()) }
 
     val scope = rememberCoroutineScope()
-    var showCtaBanner by remember { mutableStateOf(false) }
-    LaunchedEffect(Unit) {
-        showCtaBanner = AlertBannerManager.shouldShowBanner(context)
-    }
 
     // Overwrite confirmations (ZIP / 7z created into currentDir)
     var pendingZipRequest by remember { mutableStateOf<ZipCreateRequest?>(null) }
@@ -411,17 +405,6 @@ fun FileBrowserScreen(
     Scaffold(
         topBar = {
             Column {
-                if (showCtaBanner) {
-                    AlertBanner(
-                        text = stringResource(R.string.cta_banner),
-                        linkText = stringResource(R.string.learn_more),
-                        url = "https://keepandroidopen.org",
-                        onDismiss = {
-                            showCtaBanner = false
-                            scope.launch { AlertBannerManager.dismissBanner() }
-                        }
-                    )
-                }
                 TopAppBar(
                     title = {
                         Text(
@@ -968,7 +951,7 @@ fun FileBrowserScreen(
                                 verticalArrangement = Arrangement.spacedBy(8.dp)
                             ) {
                                 items(fileRows, key = { f -> f.absolutePath }) { file ->
-                                    content(file.toRowModel())
+                                    content(file.toRowModel(context))
                                 }
                             }
                         } else {
@@ -978,7 +961,7 @@ fun FileBrowserScreen(
                                 verticalArrangement = Arrangement.spacedBy(4.dp)
                             ) {
                                 items(fileRows, key = { f -> f.absolutePath }) { file ->
-                                    content(file.toRowModel())
+                                    content(file.toRowModel(context))
                                 }
                             }
                         }
@@ -992,7 +975,7 @@ fun FileBrowserScreen(
                                 verticalArrangement = Arrangement.spacedBy(8.dp)
                             ) {
                                 items(shellRows, key = { e -> e.uri.toString() }) { entry ->
-                                    content(entry.toRowModel())
+                                    content(entry.toRowModel(context))
                                 }
                             }
                         } else {
@@ -1002,7 +985,7 @@ fun FileBrowserScreen(
                                 verticalArrangement = Arrangement.spacedBy(4.dp)
                             ) {
                                 items(shellRows, key = { e -> e.uri.toString() }) { entry ->
-                                    content(entry.toRowModel())
+                                    content(entry.toRowModel(context))
                                 }
                             }
                         }
@@ -1016,7 +999,7 @@ fun FileBrowserScreen(
                                 verticalArrangement = Arrangement.spacedBy(8.dp)
                             ) {
                                 items(docRows, key = { df -> df.uri.toString() }) { df ->
-                                    content(df.toRowModel())
+                                    content(df.toRowModel(context))
                                 }
                             }
                         } else {
@@ -1026,7 +1009,7 @@ fun FileBrowserScreen(
                                 verticalArrangement = Arrangement.spacedBy(4.dp)
                             ) {
                                 items(docRows, key = { df -> df.uri.toString() }) { df ->
-                                    content(df.toRowModel())
+                                    content(df.toRowModel(context))
                                 }
                             }
                         }

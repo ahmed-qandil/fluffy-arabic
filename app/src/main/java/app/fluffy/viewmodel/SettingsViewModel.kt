@@ -31,7 +31,6 @@ class SettingsViewModel(
 
     fun performAction(propertyName: String) = viewModelScope.launch {
         when (propertyName) {
-            "supportDevelopment" -> _events.tryEmit(UiEvent.OpenUrl("https://github.com/sponsors/mlm-games"))
             "clearCache" -> {
                 val freed = withContext(Dispatchers.IO) { cacheManager.clearAll() }
                 _events.tryEmit(UiEvent.CacheCleared(freed))

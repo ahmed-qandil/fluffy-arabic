@@ -33,7 +33,6 @@ private val settingsResources: Map<String, Int> = mapOf(
     FluffySettingsKeys.SETTING_SHOW_STORAGE_INFO to R.string.setting_show_storage_info,
     FluffySettingsKeys.SETTING_SHOW_THUMBNAILS to R.string.setting_show_thumbnails,
     FluffySettingsKeys.SETTING_SORT_REVERSE to R.string.setting_sort_reverse,
-    FluffySettingsKeys.SETTING_SUPPORT_DEVELOPMENT to R.string.setting_support_development,
     FluffySettingsKeys.SETTING_THEME to R.string.setting_theme,
     FluffySettingsKeys.SETTING_VIEW_MODE to R.string.setting_view_mode,
     FluffySettingsKeys.SETTING_WARN_SHELL_WRITES to R.string.setting_warn_shell_writes,
@@ -56,8 +55,6 @@ private val settingsResources: Map<String, Int> = mapOf(
     FluffySettingsKeys.SETTING_SHOW_STORAGE_INFO_DESCRIPTION to R.string.setting_show_storage_info_desc,
     FluffySettingsKeys.SETTING_SHOW_THUMBNAILS_DESCRIPTION to R.string.setting_show_thumbnails_desc,
     FluffySettingsKeys.SETTING_SORT_REVERSE_DESCRIPTION to R.string.setting_sort_reverse_desc,
-    FluffySettingsKeys.SETTING_SUPPORT_DEVELOPMENT_DESCRIPTION to
-        R.string.setting_support_development_desc,
     FluffySettingsKeys.SETTING_VIEW_MODE_DESCRIPTION to R.string.setting_view_mode_desc,
     FluffySettingsKeys.SETTING_WARN_SHELL_WRITES_DESCRIPTION to R.string.setting_warn_shell_writes_desc,
     FluffySettingsKeys.SETTING_ZIP_LEVEL_DESCRIPTION to R.string.setting_zip_level_desc,

@@ -296,7 +296,7 @@ internal fun MediaPlayerScreen(
                                 .onFocusChanged { controlsFocused = it.hasFocus }
                                 .focusProperties { right = playFR }
                         ) {
-                            Icon(Icons.Outlined.FastRewind, "Rewind", tint = Color.White)
+                            Icon(Icons.Outlined.FastRewind, stringResource(R.string.rewind), tint = Color.White)
                         }
 
                         Spacer(Modifier.width(8.dp))
@@ -310,7 +310,7 @@ internal fun MediaPlayerScreen(
                         ) {
                             Icon(
                                 if (playerState.isPlaying) Icons.Outlined.Pause else Icons.Outlined.PlayArrow,
-                                if (playerState.isPlaying) "Pause" else "Play"
+                                if (playerState.isPlaying) stringResource(R.string.pause) else stringResource(R.string.play)
                             )
                         }
 
@@ -323,7 +323,7 @@ internal fun MediaPlayerScreen(
                                 .onFocusChanged { controlsFocused = it.hasFocus }
                                 .focusProperties { left = playFR; right = volumeFR }
                         ) {
-                            Icon(Icons.Outlined.FastForward, "Forward", tint = Color.White)
+                            Icon(Icons.Outlined.FastForward, stringResource(R.string.forward), tint = Color.White)
                         }
                     }
 

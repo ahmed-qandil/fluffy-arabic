@@ -24,7 +24,7 @@ fun TasksScreen(
         topBar = {
             AppTopBar(
                 title = { Text(stringResource(R.string.tasks)) },
-                navigationIcon = { IconButton(onClick = onBack) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null) } }
+                navigationIcon = { IconButton(onClick = onBack) { Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = stringResource(R.string.back)) } }
             )
         }
     ) { pv ->

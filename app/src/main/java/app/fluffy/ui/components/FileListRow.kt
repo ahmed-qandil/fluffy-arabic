@@ -55,6 +55,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.Role
+import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.role
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.style.TextAlign
@@ -121,7 +122,7 @@ fun rowModelForSearchHit(hit: app.fluffy.search.SearchHit): RowModel = RowModel(
     subtitle = hit.parentPath
 )
 
-fun File.toRowModel(): RowModel = RowModel(
+fun File.toRowModel(ctx: Context): RowModel = RowModel(
     name = name,
     uri = Uri.fromFile(this),
     isDir = isDirectory,
@@ -132,14 +133,14 @@ fun File.toRowModel(): RowModel = RowModel(
     isAudio = if (isDirectory) false else FileSystemAccess.getMimeType(name).startsWith("audio/"),
     isApk = if (isDirectory) false else name.lowercase().endsWith(".apk"),
     subtitle = if (isDirectory) {
-        "Folder • ${formatDate(lastModified())}"
+        "${ctx.getString(R.string.folder)} • ${formatDate(lastModified())}"
     } else {
         "${formatSize(length())} • ${formatDate(lastModified())}"
     }
 )
 
-fun DocumentFile.toRowModel(): RowModel {
-    val n = name ?: "item"
+fun DocumentFile.toRowModel(ctx: Context): RowModel {
+    val n = name ?: ctx.getString(R.string.item)
     val dir = isDirectory
     val mime = type ?: "application/octet-stream"
     return RowModel(
@@ -156,11 +157,11 @@ fun DocumentFile.toRowModel(): RowModel {
         isAudio = if (dir) false else mime.startsWith("audio/") ||
             FileSystemAccess.getMimeType(n).startsWith("audio/"),
         isApk = if (dir) false else n.lowercase().endsWith(".apk"),
-        subtitle = if (dir) "Folder" else (type ?: "file")
+        subtitle = if (dir) ctx.getString(R.string.folder) else (type ?: ctx.getString(R.string.file))
     )
 }
 
-fun ShellEntry.toRowModel(): RowModel = RowModel(
+fun ShellEntry.toRowModel(ctx: Context): RowModel = RowModel(
     name = name,
     uri = uri,
     isDir = isDir,
@@ -170,7 +171,7 @@ fun ShellEntry.toRowModel(): RowModel = RowModel(
     isPdf = if (isDir) false else FileSystemAccess.getMimeType(name).startsWith("application/pdf"),
     isAudio = if (isDir) false else FileSystemAccess.getMimeType(name).startsWith("audio/"),
     isApk = if (isDir) false else name.lowercase().endsWith(".apk"),
-    subtitle = if (isDir) "Folder" else uri.toString()
+    subtitle = if (isDir) ctx.getString(R.string.folder) else uri.toString()
 )
 
 fun RowModel.canShowThumbnail(): Boolean =
@@ -234,7 +235,7 @@ fun FileTypeIcon(
         )
         AsyncImage(
             model = request,
-            contentDescription = model.name,
+            contentDescription = null,
             imageLoader = ctx.imageLoader,
             modifier = Modifier
                 .fillMaxSize()
@@ -284,6 +285,7 @@ fun FileListRow(
     val mainFR = remember { FocusRequester() }
     val rightFR = remember { FocusRequester() }
     val cbFR = remember { FocusRequester() }
+    val selectLabel = stringResource(R.string.select_item, model.name)
 
     AnimatedListCard {
         Row(
@@ -377,7 +379,7 @@ fun FileListRow(
                 modifier = Modifier
                     .focusRequester(cbFR)
                     .focusable()
-                    .semantics { role = Role.Checkbox }
+                    .semantics { role = Role.Checkbox; contentDescription = selectLabel }
                     .focusProperties {
                         left = if (model.isArchive && onExtractHere != null) rightFR else mainFR
                     }
@@ -410,6 +412,7 @@ fun FileGridItem(
     val mainFR = remember { FocusRequester() }
     val cbFR = remember { FocusRequester() }
     val extractFR = remember { FocusRequester() }
+    val selectLabel = stringResource(R.string.select_item, model.name)
 
     AnimatedListCard {
         Column(
@@ -462,6 +465,7 @@ fun FileGridItem(
                         .padding(2.dp)
                         .focusRequester(cbFR)
                         .focusable()
+                        .semantics { role = Role.Checkbox; contentDescription = selectLabel }
                         .focusProperties {
                             up = mainFR
                             down = if (model.isArchive && onExtractHere != null) extractFR else mainFR

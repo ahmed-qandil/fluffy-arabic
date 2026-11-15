@@ -3,7 +3,6 @@
 
     <string name="about_fluffy">About and FAQs</string>
     <string name="screen_time">Screen time</string>
-    <string name="learn_more">Learn more</string>
     <string name="cannot_access">Cannot access %s: %s</string>
     <string name="shizuku_not_running">Shizuku is not running</string>
     <string name="root_access_not_available">Root access not available</string>
@@ -205,10 +204,6 @@
     <string
         name="setting_warn_shell_writes_desc"
     >Show a confirmation before writing/deleting via root or Shizuku</string>
-    <string name="setting_support_development">Support Development</string>
-    <string
-        name="setting_support_development_desc"
-    >If you find this app useful, consider supporting its continued development</string>
     <string name="category_general_settings">General</string>
     <string name="category_appearance_settings">Appearance</string>
     <string name="category_archives">Archives</string>
@@ -313,7 +308,6 @@
     <string name="cannot_launch_installer">Cannot launch installer</string>
     <string name="no_installer_found">No installer found</string>
     <string name="install">Install</string>
-    <string name="cta_banner">F-Droid is under threat. Google is changing the way you install apps on your phone. We need your help.</string>
     <string name="moving_files">Moving files</string>
     <string name="copying_files">Copying files</string>
     <string name="untitled">Untitled</string>
@@ -354,4 +348,10 @@
         <item quantity="one">Showing %1$d result, stopped after %2$d folders. Narrow your search.</item>
         <item quantity="other">Showing %1$d results, stopped after %2$d folders. Narrow your search.</item>
     </plurals>
+    <string name="item">Item</string>
+    <string name="select_item">Select %1$s</string>
+    <string name="rewind">Rewind</string>
+    <string name="forward">Forward</string>
+    <string name="play">Play</string>
+    <string name="pause">Pause</string>
 </resources>
